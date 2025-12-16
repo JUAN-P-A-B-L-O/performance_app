@@ -1,9 +1,10 @@
 package com.juan.performanceApp.pomodoro.domain.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Pomodoro {
-
+    UUID id;
     int minutes;
     PomodoroType type;
     PomodoroGroup group;
@@ -15,36 +16,21 @@ public class Pomodoro {
 
     }
 
-    public Pomodoro(int minutes, PomodoroType type, PomodoroGroup group, LocalDate date, Boolean finished) {
+    public Pomodoro(int minutes, PomodoroType type, LocalDate date) {
         this.minutes = minutes;
         this.type = type;
-        this.group = group;
+//        this.group = group;
         this.date = date;
-        this.finished = finished;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
     ///  getters and setters
     ///
+    public UUID getId() {
+        return id;
+    }
+
     public int getMinutes() {
         return minutes;
     }

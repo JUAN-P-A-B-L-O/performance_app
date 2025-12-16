@@ -1,22 +1,51 @@
 package com.juan.performanceApp.pomodoro.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
+import com.juan.performanceApp.pomodoro.domain.model.PomodoroType;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
+@Table(name = "pomodoros")
 public class PomodoroEntity {
-    @Id
-    UUID id;
 
+    @Id
+    @Column(nullable = false, updatable = false)
+    private UUID id;
+
+    @Column(nullable = false)
     private int minutes;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PomodoroType type;
 
-    public PomodoroEntity(int minutes, String type) {
+//    @Column(nullable = false)
+//    private PomodoroGroup group;
+
+    @Column(nullable = false)
+    private LocalDate date;
+
+    // JPA only
+    protected PomodoroEntity() {}
+
+    public PomodoroEntity(
+            UUID id,
+            int minutes,
+            PomodoroType type,
+            PomodoroGroup group,
+            LocalDate date
+    ) {
+        this.id = id;
+        this.minutes = minutes;
+        this.type = type;
+//        this.group = group;
+        this.date = date;
     }
 
+    // getters and setters
 
     public UUID getId() {
         return id;
@@ -34,11 +63,27 @@ public class PomodoroEntity {
         this.minutes = minutes;
     }
 
-    public String getType() {
+    public PomodoroType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(PomodoroType type) {
         this.type = type;
+    }
+
+//    public PomodoroGroup getGroup() {
+//        return group;
+//    }
+//
+//    public void setGroup(PomodoroGroup group) {
+//        this.group = group;
+//    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
