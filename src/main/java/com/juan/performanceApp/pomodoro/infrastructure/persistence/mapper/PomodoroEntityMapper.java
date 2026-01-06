@@ -22,6 +22,7 @@ public class PomodoroEntityMapper {
         }
 
         return new Pomodoro(
+                entity.getId(),
                 entity.getMinutes(),
                 entity.getType(),
 //                entity.getGroup(),

@@ -16,7 +16,8 @@ public class Pomodoro {
 
     }
 
-    public Pomodoro(int minutes, PomodoroType type, LocalDate date) {
+    public Pomodoro(UUID id, int minutes, PomodoroType type, LocalDate date) {
+        this.id = id;
         this.minutes = minutes;
         this.type = type;
 //        this.group = group;

@@ -16,17 +16,11 @@ public class PomodoroService {
         this.pomodoroRepository = pomodoroRepository;
     }
 
-    public List<CreatePomodoroDto> findAll(){
-
-        List<Pomodoro> pomodoros = pomodoroRepository.findAll();
-
-        return PomodoroDtoMapper.toDto(pomodoros);
+    public List<Pomodoro> findAll(){
+        return pomodoroRepository.findAll();
     }
 
-    public CreatePomodoroDto createPomodoro(CreatePomodoroDto createPomodoroDto){
-        Pomodoro pomodoro = PomodoroDtoMapper.toDomain(createPomodoroDto);
-
-        Pomodoro savedPomodoro = pomodoroRepository.save(pomodoro);
-        return PomodoroDtoMapper.toDto(savedPomodoro);
+    public Pomodoro createPomodoro(Pomodoro pomodoro){
+        return pomodoroRepository.save(pomodoro);
     }
 }

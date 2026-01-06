@@ -1,6 +1,7 @@
 package com.juan.performanceApp.pomodoro.adapter.web.mapper;
 
 import com.juan.performanceApp.pomodoro.adapter.web.dto.CreatePomodoroDto;
+import com.juan.performanceApp.pomodoro.adapter.web.dto.PomodoroResponseDto;
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
 
 import java.util.List;
@@ -16,15 +17,16 @@ public final class PomodoroDtoMapper {
     public static Pomodoro toDomain(CreatePomodoroDto dto) {
         if (dto == null) return null;
 
-        Pomodoro pomodoro = new Pomodoro(dto.minutes(), dto.type(), dto.date());
+        Pomodoro pomodoro = new Pomodoro(null, dto.minutes(), dto.type(), dto.date());
 
         return pomodoro;
     }
 
-    public static CreatePomodoroDto toDto(Pomodoro pomodoro) {
+    public static PomodoroResponseDto toDto(Pomodoro pomodoro) {
         if (pomodoro == null) return null;
 
-        return new CreatePomodoroDto(
+        return new PomodoroResponseDto(
+                pomodoro.getId(),
                 pomodoro.getMinutes(),
                 pomodoro.getType(),
 //                pomodoro.getGroup(),
@@ -32,7 +34,7 @@ public final class PomodoroDtoMapper {
         );
     }
 
-    public static List<CreatePomodoroDto> toDto(List<Pomodoro> pomodoros) {
+    public static List<PomodoroResponseDto> toDto(List<Pomodoro> pomodoros) {
         if (pomodoros == null) return List.of();
 
         return pomodoros.stream()
