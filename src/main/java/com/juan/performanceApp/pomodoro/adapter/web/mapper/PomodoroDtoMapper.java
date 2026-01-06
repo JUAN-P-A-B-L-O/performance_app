@@ -1,6 +1,6 @@
-package com.juan.performanceApp.pomodoro.mapper;
+package com.juan.performanceApp.pomodoro.adapter.web.mapper;
 
-import com.juan.performanceApp.pomodoro.DTO.PomodoroDto;
+import com.juan.performanceApp.pomodoro.adapter.web.dto.CreatePomodoroDto;
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public final class PomodoroDtoMapper {
         // prevents instantiation
     }
 
-    public static Pomodoro toDomain(PomodoroDto dto) {
+    public static Pomodoro toDomain(CreatePomodoroDto dto) {
         if (dto == null) return null;
 
         Pomodoro pomodoro = new Pomodoro(dto.minutes(), dto.type(), dto.date());
@@ -21,18 +21,18 @@ public final class PomodoroDtoMapper {
         return pomodoro;
     }
 
-    public static PomodoroDto toDto(Pomodoro pomodoro) {
+    public static CreatePomodoroDto toDto(Pomodoro pomodoro) {
         if (pomodoro == null) return null;
 
-        return new PomodoroDto(
+        return new CreatePomodoroDto(
                 pomodoro.getMinutes(),
                 pomodoro.getType(),
-                pomodoro.getGroup(),
+//                pomodoro.getGroup(),
                 pomodoro.getDate()
         );
     }
 
-    public static List<PomodoroDto> toDto(List<Pomodoro> pomodoros) {
+    public static List<CreatePomodoroDto> toDto(List<Pomodoro> pomodoros) {
         if (pomodoros == null) return List.of();
 
         return pomodoros.stream()

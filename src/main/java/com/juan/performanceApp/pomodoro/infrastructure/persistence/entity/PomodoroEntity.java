@@ -1,4 +1,4 @@
-package com.juan.performanceApp.pomodoro.entity;
+package com.juan.performanceApp.pomodoro.infrastructure.persistence.entity;
 
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroType;
@@ -12,7 +12,7 @@ import java.util.UUID;
 public class PomodoroEntity {
 
     @Id
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)

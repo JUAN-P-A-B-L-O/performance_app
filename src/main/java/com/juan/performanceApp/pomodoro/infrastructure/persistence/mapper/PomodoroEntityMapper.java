@@ -1,7 +1,7 @@
 package com.juan.performanceApp.pomodoro.infrastructure.persistence.mapper;
 
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
-import com.juan.performanceApp.pomodoro.entity.PomodoroEntity;
+import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.PomodoroEntity;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

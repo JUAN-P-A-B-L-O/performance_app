@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Pomodoro {
-    UUID id;
+    private  UUID id;
     int minutes;
     PomodoroType type;
     PomodoroGroup group;
@@ -24,12 +24,17 @@ public class Pomodoro {
     }
 
 
-
-    ///  getters and setters
-    ///
     public UUID getId() {
         return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    ///  getters and setters
+    ///
+
 
     public int getMinutes() {
         return minutes;

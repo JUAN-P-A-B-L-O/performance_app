@@ -2,9 +2,9 @@ package com.juan.performanceApp.pomodoro.infrastructure.persistence;
 
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
 import com.juan.performanceApp.pomodoro.domain.repository.PomodoroRepositoryI;
-import com.juan.performanceApp.pomodoro.entity.PomodoroEntity;
+import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.PomodoroEntity;
 import com.juan.performanceApp.pomodoro.infrastructure.persistence.mapper.PomodoroEntityMapper;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.juan.performanceApp.pomodoro.infrastructure.persistence.jpa.PomodoroJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,10 +12,11 @@ import java.util.List;
 @Repository
 public class PomodoroRepositoryImpl implements PomodoroRepositoryI {
 
-    private final JpaRepository repository;
+    private final PomodoroJpaRepository repository;
 
 
-    public PomodoroRepositoryImpl(JpaRepository repository) {
+
+    public PomodoroRepositoryImpl(PomodoroJpaRepository repository) {
         this.repository = repository;
     }
 
@@ -23,7 +24,15 @@ public class PomodoroRepositoryImpl implements PomodoroRepositoryI {
     public List<Pomodoro> findAll() {
         List<PomodoroEntity> pomodoroEntities = repository.findAll();
 
-        List<Pomodoro> pomodorosDomain = PomodoroEntityMapper.toDomainList(pomodoroEntities);
-        return List.of();
+        return PomodoroEntityMapper.toDomainList(pomodoroEntities);
+    }
+
+    @Override
+    public Pomodoro save(Pomodoro pomodoro){
+        PomodoroEntity pomodoroEntity = PomodoroEntityMapper.toEntity(pomodoro);
+
+        PomodoroEntity savedPomodoroEntity = repository.save(pomodoroEntity);
+
+        return  PomodoroEntityMapper.toDomain(savedPomodoroEntity);
     }
 }
