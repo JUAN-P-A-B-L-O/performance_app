@@ -1,18 +1,16 @@
 package com.juan.performanceApp.pomodoro.application.service;
 
-import com.juan.performanceApp.pomodoro.adapter.web.dto.CreatePomodoroDto;
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
-import com.juan.performanceApp.pomodoro.domain.repository.PomodoroRepositoryI;
-import com.juan.performanceApp.pomodoro.adapter.web.mapper.PomodoroDtoMapper;
+import com.juan.performanceApp.pomodoro.domain.repository.IPomodoroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PomodoroService {
-    PomodoroRepositoryI pomodoroRepository;
+    IPomodoroRepository pomodoroRepository;
 
-    public PomodoroService(PomodoroRepositoryI pomodoroRepository) {
+    public PomodoroService(IPomodoroRepository pomodoroRepository) {
         this.pomodoroRepository = pomodoroRepository;
     }
 
