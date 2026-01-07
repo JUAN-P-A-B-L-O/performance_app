@@ -8,6 +8,8 @@ import com.juan.performanceApp.pomodoro.infrastructure.persistence.mapper.Pomodo
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Repository
 public class ImplPomodoroGroupRepository implements IPomodoroGroupRepository {
     private final PomodoroGroupJpaRepository pomodoroGroupJpaRepository;
@@ -17,10 +19,18 @@ public class ImplPomodoroGroupRepository implements IPomodoroGroupRepository {
     }
 
     @Override
+    public List<PomodoroGroup> findAll() {
+        return PomodoroGroupEntityMapper
+                .toDomainList(pomodoroGroupJpaRepository.findAll());
+    }
+
+    @Override
     public PomodoroGroup save(PomodoroGroup pomodoroGroup){
         PomodoroGroupEntity savedPomodoroGroupEntity = pomodoroGroupJpaRepository
                 .save(PomodoroGroupEntityMapper.toEntity(pomodoroGroup));
 
         return PomodoroGroupEntityMapper.toDomain(savedPomodoroGroupEntity);
     }
+
+
 }

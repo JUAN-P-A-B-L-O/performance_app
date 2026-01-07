@@ -17,6 +17,10 @@ public class PomodoroGroupEntity {
     @Column(nullable = false)
     String description;
 
+    public PomodoroGroupEntity(){
+
+    }
+
     public PomodoroGroupEntity(UUID id, String name, String description) {
         this.id = id;
         this.name = name;

@@ -3,6 +3,7 @@ package com.juan.performanceApp.pomodoro.adapter.web.mapper;
 import com.juan.performanceApp.pomodoro.adapter.web.dto.CreatePomodoroDto;
 import com.juan.performanceApp.pomodoro.adapter.web.dto.PomodoroResponseDto;
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
+import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroupId;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +18,7 @@ public final class PomodoroDtoMapper {
     public static Pomodoro toDomain(CreatePomodoroDto dto) {
         if (dto == null) return null;
 
-        Pomodoro pomodoro = new Pomodoro(null, dto.minutes(), dto.type(), dto.date());
+        Pomodoro pomodoro = new Pomodoro(null, dto.minutes(), dto.type(), dto.date(), new PomodoroGroupId(dto.pomodoroGroupId()));
 
         return pomodoro;
     }

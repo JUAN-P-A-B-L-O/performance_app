@@ -5,12 +5,12 @@ import com.juan.performanceApp.pomodoro.adapter.web.dto.PomodoGroupResponseDto;
 import com.juan.performanceApp.pomodoro.adapter.web.mapper.PomodoGroupDtoMapper;
 import com.juan.performanceApp.pomodoro.application.service.PomodoroGroupService;
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pomodoroGroups")
@@ -21,8 +21,17 @@ public class PomodoroGroupController {
        this.pomodoroGroupService = pomodoroGroupService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<PomodoGroupResponseDto>> findAll(){
+        List<PomodoroGroup> pomodoroGroups = pomodoroGroupService.findAll();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(PomodoGroupDtoMapper.toDto(pomodoroGroups));
+    }
+
     @PostMapping
-    public ResponseEntity<PomodoGroupResponseDto> createPomodoroGroup(@RequestBody CreatePomodoroGroupDto createPomodoroGroupDto){
+    public ResponseEntity<PomodoGroupResponseDto> createPomodoroGroup(@RequestBody @Valid CreatePomodoroGroupDto createPomodoroGroupDto){
         PomodoroGroup createdPomodoroGroup = pomodoroGroupService
                 .createPomodoroGroup(PomodoGroupDtoMapper.toDomain(createPomodoroGroupDto));
 

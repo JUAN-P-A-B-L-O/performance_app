@@ -31,7 +31,8 @@ public class PomodoroController {
 
     @PostMapping()
     public ResponseEntity<PomodoroResponseDto> createPomodoro(@RequestBody CreatePomodoroDto createPomodoroDto){
-        Pomodoro createdPomodoro = pomodoroService.createPomodoro(PomodoroDtoMapper.toDomain(createPomodoroDto));
+        Pomodoro createdPomodoro = pomodoroService
+                .createPomodoro(PomodoroDtoMapper.toDomain(createPomodoroDto));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(PomodoroDtoMapper.toDto(createdPomodoro));
     }

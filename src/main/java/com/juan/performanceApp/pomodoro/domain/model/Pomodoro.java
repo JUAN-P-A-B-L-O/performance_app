@@ -10,17 +10,17 @@ public class Pomodoro {
     PomodoroGroup group;
     LocalDate date;
     Boolean finished;
-
+    PomodoroGroupId pomodoroGroupId;
 
     public Pomodoro (){
 
     }
 
-    public Pomodoro(UUID id, int minutes, PomodoroType type, LocalDate date) {
+    public Pomodoro(UUID id, int minutes, PomodoroType type, LocalDate date, PomodoroGroupId groupId) {
         this.id = id;
         this.minutes = minutes;
         this.type = type;
-//        this.group = group;
+        this.pomodoroGroupId = groupId;
         this.date = date;
     }
 

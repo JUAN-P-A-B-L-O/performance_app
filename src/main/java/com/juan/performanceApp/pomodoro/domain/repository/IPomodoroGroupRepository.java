@@ -2,7 +2,9 @@ package com.juan.performanceApp.pomodoro.domain.repository;
 
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
 
-public interface IPomodoroGroupRepository {
+import java.util.List;
 
+public interface IPomodoroGroupRepository {
+    public List<PomodoroGroup> findAll();
     public PomodoroGroup save(PomodoroGroup pomodoroGroup);
 }
