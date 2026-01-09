@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/pomodoroGroups")
+@RequestMapping("/pomodoro-groups")
 public class PomodoroGroupController {
     private final PomodoroGroupService pomodoroGroupService;
 
@@ -30,12 +31,18 @@ public class PomodoroGroupController {
                 .body(PomodoGroupDtoMapper.toDto(pomodoroGroups));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PomodoGroupResponseDto> findById(@PathVariable UUID id) {
+        PomodoroGroup pomodoroGroup = pomodoroGroupService.findById(id);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(PomodoGroupDtoMapper.toDto(pomodoroGroup));
+    }
+
     @PostMapping
     public ResponseEntity<PomodoGroupResponseDto> createPomodoroGroup(@RequestBody @Valid CreatePomodoroGroupDto createPomodoroGroupDto){
         PomodoroGroup createdPomodoroGroup = pomodoroGroupService
                 .createPomodoroGroup(PomodoGroupDtoMapper.toDomain(createPomodoroGroupDto));
-
-
 
         return ResponseEntity.status(HttpStatus.CREATED).body(PomodoGroupDtoMapper.toDto(createdPomodoroGroup));
     }

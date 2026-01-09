@@ -5,6 +5,7 @@ import com.juan.performanceApp.pomodoro.domain.repository.IPomodoroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PomodoroService {
@@ -16,6 +17,10 @@ public class PomodoroService {
 
     public List<Pomodoro> findAll(){
         return pomodoroRepository.findAll();
+    }
+
+    public Pomodoro findById(UUID id){
+        return pomodoroRepository.findById(id);
     }
 
     public Pomodoro createPomodoro(Pomodoro pomodoro){

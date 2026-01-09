@@ -1,9 +1,14 @@
 package com.juan.performanceApp.pomodoro.infrastructure.persistence.mapper;
 
 import com.juan.performanceApp.pomodoro.domain.model.Pomodoro;
+import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroupId;
 import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.PomodoroEntity;
+import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.PomodoroGroupEntity;
+
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PomodoroEntityMapper {
@@ -25,8 +30,8 @@ public class PomodoroEntityMapper {
                 entity.getId(),
                 entity.getMinutes(),
                 entity.getType(),
-//                entity.getGroup(),
-                entity.getDate()
+                entity.get_createdAt(),
+                new PomodoroGroupId(entity.getGroup().getId())
         );
     }
 
@@ -44,25 +49,25 @@ public class PomodoroEntityMapper {
        Domain -> Entity
        ========================= */
 
-    public static PomodoroEntity toEntity(Pomodoro domain) {
+    public static PomodoroEntity toEntity(Pomodoro domain, PomodoroGroupEntity groupEntity) {
         if (domain == null) {
             return null;
         }
 
         PomodoroEntity entity = new PomodoroEntity(
-               domain.getId(), domain.getMinutes(),domain.getType(), domain.getGroup(), domain.getDate()
+               domain.getId(), domain.getMinutes(),domain.getType(), groupEntity
         );
 
         return entity;
     }
 
-    public static List<PomodoroEntity> toEntityList(List<Pomodoro> domains) {
-        if (domains == null || domains.isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        return domains.stream()
-                .map(PomodoroEntityMapper::toEntity)
-                .collect(Collectors.toList());
-    }
+//    public static List<PomodoroEntity> toEntityList(List<Pomodoro> domains, Map<UUID, PomodoroGroupEntity> pomodoroGroupEntityMap) {
+//        if (domains == null || domains.isEmpty()) {
+//            return Collections.emptyList();
+//        }
+//
+//        return domains.stream()
+//                .map(PomodoroEntityMapper::toEntity)
+//                .collect(Collectors.toList());
+//    }
 }

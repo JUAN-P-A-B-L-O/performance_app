@@ -4,7 +4,9 @@ import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.Pomodo
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface PomodoroJpaRepository extends JpaRepository<PomodoroEntity, Long> {
+public interface PomodoroJpaRepository extends JpaRepository<PomodoroEntity, UUID> {
 
 }

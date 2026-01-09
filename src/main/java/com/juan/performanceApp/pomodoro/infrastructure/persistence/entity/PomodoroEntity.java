@@ -3,8 +3,10 @@ package com.juan.performanceApp.pomodoro.infrastructure.persistence.entity;
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroType;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -22,11 +24,12 @@ public class PomodoroEntity {
     @Column(nullable = false)
     private PomodoroType type;
 
-//    @Column(nullable = false)
-//    private PomodoroGroup group;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "group_id", nullable = true)
+    private PomodoroGroupEntity group;
 
-    @Column(nullable = false)
-    private LocalDate date;
+    @CreationTimestamp
+    private OffsetDateTime _createdAt;
 
     // JPA only
     protected PomodoroEntity() {}
@@ -35,14 +38,12 @@ public class PomodoroEntity {
             UUID id,
             int minutes,
             PomodoroType type,
-            PomodoroGroup group,
-            LocalDate date
+            PomodoroGroupEntity pomodoroGroupEntity
     ) {
         this.id = id;
         this.minutes = minutes;
         this.type = type;
-//        this.group = group;
-        this.date = date;
+        this.group = pomodoroGroupEntity;
     }
 
     // getters and setters
@@ -71,7 +72,23 @@ public class PomodoroEntity {
         this.type = type;
     }
 
-//    public PomodoroGroup getGroup() {
+    public PomodoroGroupEntity getGroup() {
+        return group;
+    }
+
+    public void setGroup(PomodoroGroupEntity group) {
+        this.group = group;
+    }
+
+    public OffsetDateTime get_createdAt() {
+        return _createdAt;
+    }
+
+    public void set_createdAt(OffsetDateTime _createdAt) {
+        this._createdAt = _createdAt;
+    }
+
+    //    public PomodoroGroup getGroup() {
 //        return group;
 //    }
 //
@@ -79,11 +96,5 @@ public class PomodoroEntity {
 //        this.group = group;
 //    }
 
-    public LocalDate getDate() {
-        return date;
-    }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
 }

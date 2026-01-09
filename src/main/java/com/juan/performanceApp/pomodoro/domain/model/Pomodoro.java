@@ -1,14 +1,14 @@
 package com.juan.performanceApp.pomodoro.domain.model;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public class Pomodoro {
     private  UUID id;
     int minutes;
     PomodoroType type;
-    PomodoroGroup group;
-    LocalDate date;
+    private OffsetDateTime _createdAt;
     Boolean finished;
     PomodoroGroupId pomodoroGroupId;
 
@@ -16,12 +16,12 @@ public class Pomodoro {
 
     }
 
-    public Pomodoro(UUID id, int minutes, PomodoroType type, LocalDate date, PomodoroGroupId groupId) {
+    public Pomodoro(UUID id, int minutes, PomodoroType type, OffsetDateTime date, PomodoroGroupId groupId) {
         this.id = id;
         this.minutes = minutes;
         this.type = type;
         this.pomodoroGroupId = groupId;
-        this.date = date;
+        this._createdAt = date;
     }
 
 
@@ -53,20 +53,12 @@ public class Pomodoro {
         this.type = type;
     }
 
-    public PomodoroGroup getGroup() {
-        return group;
+    public OffsetDateTime get_createdAt() {
+        return _createdAt;
     }
 
-    public void setGroup(PomodoroGroup group) {
-        this.group = group;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void set_createdAt(OffsetDateTime _createdAt) {
+        this._createdAt = _createdAt;
     }
 
     public Boolean getFinished() {
@@ -75,5 +67,13 @@ public class Pomodoro {
 
     public void setFinished(Boolean finished) {
         this.finished = finished;
+    }
+
+    public PomodoroGroupId getPomodoroGroupId() {
+        return pomodoroGroupId;
+    }
+
+    public void setPomodoroGroupId(PomodoroGroupId pomodoroGroupId) {
+        this.pomodoroGroupId = pomodoroGroupId;
     }
 }

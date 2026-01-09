@@ -1,14 +1,15 @@
 package com.juan.performanceApp.pomodoro.infrastructure.persistence;
 
+import com.juan.performanceApp.pomodoro.domain.exception.ResourceNotFoundException;
 import com.juan.performanceApp.pomodoro.domain.model.PomodoroGroup;
 import com.juan.performanceApp.pomodoro.domain.repository.IPomodoroGroupRepository;
 import com.juan.performanceApp.pomodoro.infrastructure.persistence.entity.PomodoroGroupEntity;
 import com.juan.performanceApp.pomodoro.infrastructure.persistence.jpa.PomodoroGroupJpaRepository;
 import com.juan.performanceApp.pomodoro.infrastructure.persistence.mapper.PomodoroGroupEntityMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class ImplPomodoroGroupRepository implements IPomodoroGroupRepository {
@@ -30,6 +31,14 @@ public class ImplPomodoroGroupRepository implements IPomodoroGroupRepository {
                 .save(PomodoroGroupEntityMapper.toEntity(pomodoroGroup));
 
         return PomodoroGroupEntityMapper.toDomain(savedPomodoroGroupEntity);
+    }
+
+    @Override
+    public PomodoroGroup findById(UUID id) {
+        PomodoroGroupEntity pomodoroGroupEntity =  pomodoroGroupJpaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("PomodoroGroup", id));
+
+        return PomodoroGroupEntityMapper.toDomain(pomodoroGroupEntity);
     }
 
 

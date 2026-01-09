@@ -12,6 +12,5 @@ import java.util.UUID;
 public record CreatePomodoroDto(
         @NotNull @Min(1) @Max(240) Integer minutes,
         @NotNull PomodoroType type,
-        @NotNull LocalDate date,
         UUID pomodoroGroupId
 ) {}

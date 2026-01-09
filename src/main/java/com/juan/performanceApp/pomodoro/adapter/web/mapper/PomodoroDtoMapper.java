@@ -18,7 +18,7 @@ public final class PomodoroDtoMapper {
     public static Pomodoro toDomain(CreatePomodoroDto dto) {
         if (dto == null) return null;
 
-        Pomodoro pomodoro = new Pomodoro(null, dto.minutes(), dto.type(), dto.date(), new PomodoroGroupId(dto.pomodoroGroupId()));
+        Pomodoro pomodoro = new Pomodoro(null, dto.minutes(), dto.type(), null, new PomodoroGroupId(dto.pomodoroGroupId()));
 
         return pomodoro;
     }
@@ -30,8 +30,8 @@ public final class PomodoroDtoMapper {
                 pomodoro.getId(),
                 pomodoro.getMinutes(),
                 pomodoro.getType(),
-//                pomodoro.getGroup(),
-                pomodoro.getDate()
+                pomodoro.get_createdAt(),
+                pomodoro.getPomodoroGroupId().value()
         );
     }
 

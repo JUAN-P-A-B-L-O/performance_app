@@ -2,6 +2,7 @@ package com.juan.performanceApp.pomodoro.adapter.web;
 
 
 import com.juan.performanceApp.pomodoro.adapter.web.dto.CreatePomodoroDto;
+import com.juan.performanceApp.pomodoro.adapter.web.dto.PomodoGroupResponseDto;
 import com.juan.performanceApp.pomodoro.adapter.web.dto.PomodoroResponseDto;
 import com.juan.performanceApp.pomodoro.adapter.web.mapper.PomodoroDtoMapper;
 import com.juan.performanceApp.pomodoro.application.service.PomodoroService;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/pomodoros")
@@ -27,6 +29,14 @@ public class PomodoroController {
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(PomodoroDtoMapper.toDto(pomodoros));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PomodoroResponseDto> findById(@PathVariable UUID id){
+        Pomodoro pomodoro = pomodoroService.findById(id);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(PomodoroDtoMapper.toDto(pomodoro));
     }
 
     @PostMapping()
