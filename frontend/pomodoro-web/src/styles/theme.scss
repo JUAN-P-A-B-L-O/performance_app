@@ -1,0 +1,32 @@
+/* Tema padrão (Pomodoro) */
+:root {
+  /* Backgrounds */
+  --bg: #b85a5a;
+
+  --panel: rgba(255, 255, 255, 0.12);
+  --panelStrong: rgba(255, 255, 255, 0.16);
+
+  /* Texto */
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.72);
+
+  /* Bordas e sombra */
+  --border: rgba(255, 255, 255, 0.18);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+  /* Botões principais */
+  --btnBg: rgba(255, 255, 255, 0.92);
+  --btnText: #b85a5a;
+}
+
+/* Short Break */
+[data-theme="short"] {
+  --bg: #2f7f84;
+  --btnText: #2f7f84;
+}
+
+/* Long Break */
+[data-theme="long"] {
+  --bg: #3b6f97;
+  --btnText: #3b6f97;
+}

@@ -1,0 +1,67 @@
+.card {
+  margin-top: 22px;
+  padding: 18px;
+
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.12);
+  }
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.14);
+  color: var(--text);
+}
+
+.time {
+  font-size: 92px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 12px 0 18px;
+}
+
+.startButton {
+  display: block;
+  margin: 0 auto;
+
+  border: none;
+  border-radius: 8px;
+  padding: 12px 46px;
+
+  background: var(--btnBg);
+  color: var(--btnText);
+
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
