@@ -1,0 +1,2 @@
+ALTER TABLE pomodoros
+ADD COLUMN finished_at TIMESTAMP;

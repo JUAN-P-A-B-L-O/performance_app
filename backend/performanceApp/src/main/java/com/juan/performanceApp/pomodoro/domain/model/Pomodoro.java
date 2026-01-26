@@ -1,43 +1,44 @@
 package com.juan.performanceApp.pomodoro.domain.model;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public class Pomodoro {
-    private  UUID id;
-    int minutes;
-    PomodoroType type;
-    private Instant _createdAt;
+    private final UUID id;
+    private final int minutes;
+    private final PomodoroType type;
+    private final Instant _createdAt;
     private Instant _finishedAt;
 
     Boolean finished;
     PomodoroGroupId pomodoroGroupId;
 
-    public Pomodoro (){
-
-    }
-
-    private Pomodoro(UUID id, int minutes, PomodoroType type, PomodoroGroupId groupId, Instant createdAt) {
+    private Pomodoro(UUID id, int minutes, PomodoroType type, PomodoroGroupId groupId,
+                     Instant createdAt, Instant finisheAt) {
         this.id = id;
         this.minutes = minutes;
         this.type = type;
         this.pomodoroGroupId = groupId;
         this._createdAt = createdAt;
+        this._finishedAt = finisheAt;
     }
     public static Pomodoro start(UUID groupId, PomodoroType type, int minutes) {
-        return new Pomodoro(UUID.randomUUID(),minutes, type,  new PomodoroGroupId(groupId) , Instant.now());
+        return new Pomodoro(UUID.randomUUID(),minutes, type,  new PomodoroGroupId(groupId) , Instant.now(), null);
     }
+
+    public static Pomodoro from (UUID id, int minutes, PomodoroType type, Instant _createdAt, Instant _finishedAt, UUID groupId ){
+        return new Pomodoro(id, minutes, type,   new PomodoroGroupId(groupId), _createdAt, _finishedAt);
+    }
+
+
 
 
     public UUID getId() {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+
+
 
     ///  getters and setters
     ///
@@ -46,34 +47,14 @@ public class Pomodoro {
     public int getMinutes() {
         return minutes;
     }
-
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
-    }
-
     public PomodoroType getType() {
         return type;
     }
-
-    public void setType(PomodoroType type) {
-        this.type = type;
-    }
-
-
     public Instant get_createdAt() {
         return _createdAt;
     }
-
-    public void set_createdAt(Instant _createdAt) {
-        this._createdAt = _createdAt;
-    }
-
     public Instant get_finishedAt() {
         return _finishedAt;
-    }
-
-    public void set_finishedAt(Instant _finishedAt) {
-        this._finishedAt = _finishedAt;
     }
 
     public Boolean getFinished() {

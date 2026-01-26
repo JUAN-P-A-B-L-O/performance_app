@@ -26,14 +26,13 @@ public class PomodoroEntityMapper {
             return null;
         }
 
-        return  Pomodoro.start(
+        return  Pomodoro.from(
                 entity.getGroup().getId(),
-                entity.getType()
-                entity.getId(),
                 entity.getMinutes(),
-                ,
+                entity.getType(),
                 entity.get_createdAt(),
-                new PomodoroGroupId()
+                entity.getFinishedAt(),
+                entity.getGroup().getId()
         );
     }
 
@@ -63,13 +62,4 @@ public class PomodoroEntityMapper {
         return entity;
     }
 
-//    public static List<PomodoroEntity> toEntityList(List<Pomodoro> domains, Map<UUID, PomodoroGroupEntity> pomodoroGroupEntityMap) {
-//        if (domains == null || domains.isEmpty()) {
-//            return Collections.emptyList();
-//        }
-//
-//        return domains.stream()
-//                .map(PomodoroEntityMapper::toEntity)
-//                .collect(Collectors.toList());
-//    }
 }
