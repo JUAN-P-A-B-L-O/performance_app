@@ -10,20 +10,30 @@ public class Pomodoro {
     private final Instant _createdAt;
     private Instant _finishedAt;
 
-    Boolean finished;
     PomodoroGroupId pomodoroGroupId;
 
     private Pomodoro(UUID id, int minutes, PomodoroType type, PomodoroGroupId groupId,
-                     Instant createdAt, Instant finisheAt) {
+                     Instant createdAt, Instant finishedAt) {
         this.id = id;
         this.minutes = minutes;
         this.type = type;
         this.pomodoroGroupId = groupId;
         this._createdAt = createdAt;
-        this._finishedAt = finisheAt;
+        this._finishedAt = finishedAt;
     }
     public static Pomodoro start(UUID groupId, PomodoroType type, int minutes) {
         return new Pomodoro(UUID.randomUUID(),minutes, type,  new PomodoroGroupId(groupId) , Instant.now(), null);
+    }
+
+    public void finish(){
+        if(this.isFinished()) {
+            throw new IllegalStateException("Pomodoro is already finished");
+        }
+        this._finishedAt = Instant.now();
+    }
+
+    public boolean isFinished() {
+        return this._finishedAt != null;
     }
 
     public static Pomodoro from (UUID id, int minutes, PomodoroType type, Instant _createdAt, Instant _finishedAt, UUID groupId ){
@@ -55,14 +65,6 @@ public class Pomodoro {
     }
     public Instant get_finishedAt() {
         return _finishedAt;
-    }
-
-    public Boolean getFinished() {
-        return finished;
-    }
-
-    public void setFinished(Boolean finished) {
-        this.finished = finished;
     }
 
     public PomodoroGroupId getPomodoroGroupId() {
