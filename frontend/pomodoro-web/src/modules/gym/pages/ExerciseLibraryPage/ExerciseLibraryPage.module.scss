@@ -1,0 +1,47 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.exerciseCard {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.muted {
+  color: var(--muted, #64748b);
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+}

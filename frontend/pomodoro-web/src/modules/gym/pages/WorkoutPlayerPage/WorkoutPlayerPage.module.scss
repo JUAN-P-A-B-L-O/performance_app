@@ -1,0 +1,32 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exerciseGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.setList {
+  display: grid;
+  gap: 12px;
+}
+
+.addSet {
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+}

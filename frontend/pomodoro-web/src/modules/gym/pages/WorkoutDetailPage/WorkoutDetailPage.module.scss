@@ -1,0 +1,54 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.exerciseList {
+  display: grid;
+  gap: 16px;
+}
+
+.setTable {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.setRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted, #64748b);
+}
+
+.muted {
+  color: var(--muted, #64748b);
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+  .setRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}

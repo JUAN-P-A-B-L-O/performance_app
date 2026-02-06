@@ -1,0 +1,29 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.formGrid select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+}
