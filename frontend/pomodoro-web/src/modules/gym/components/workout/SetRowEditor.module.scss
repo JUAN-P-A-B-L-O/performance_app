@@ -1,0 +1,30 @@
+.row {
+  display: grid;
+  grid-template-columns: 80px repeat(3, minmax(0, 1fr)) 120px;
+  gap: 8px;
+  align-items: center;
+}
+
+.index {
+  font-weight: 600;
+  color: var(--muted, #64748b);
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.save {
+  border-radius: 999px;
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 6px 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.save:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

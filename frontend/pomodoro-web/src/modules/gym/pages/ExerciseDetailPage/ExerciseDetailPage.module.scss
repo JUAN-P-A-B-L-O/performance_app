@@ -1,0 +1,45 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.prGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.setList,
+.sessionList {
+  display: grid;
+  gap: 8px;
+}
+
+.sessionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.muted {
+  color: var(--muted, #64748b);
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+  .prGrid {
+    grid-template-columns: 1fr;
+  }
+}

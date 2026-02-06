@@ -1,0 +1,71 @@
+.page {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.listStack {
+  display: grid;
+  gap: 12px;
+}
+
+.rowBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.nutritionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.navCard {
+  text-decoration: none;
+  color: inherit;
+}
+
+.muted {
+  color: var(--muted, #64748b);
+}
+
+.mutedSmall {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--muted, #64748b);
+}
+
+.chartLegend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px;
+  }
+  .rowBetween {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nutritionGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,61 @@
+import { RecoveryEntry } from "../domain/types";
+
+export const mockRecoveryEntries: RecoveryEntry[] = [
+  {
+    id: "rec-1",
+    date: "2024-08-01",
+    sleepHours: 7.5,
+    sleepQuality: 4,
+    steps: 8200,
+    soreness: 3,
+  },
+  {
+    id: "rec-2",
+    date: "2024-08-02",
+    sleepHours: 7,
+    sleepQuality: 3,
+    steps: 7500,
+    soreness: 4,
+  },
+  {
+    id: "rec-3",
+    date: "2024-08-03",
+    sleepHours: 8,
+    sleepQuality: 5,
+    steps: 9100,
+    soreness: 2,
+  },
+  {
+    id: "rec-4",
+    date: "2024-08-04",
+    sleepHours: 6.5,
+    sleepQuality: 3,
+    steps: 6800,
+    soreness: 4,
+  },
+  {
+    id: "rec-5",
+    date: "2024-08-05",
+    sleepHours: 7.2,
+    sleepQuality: 4,
+    steps: 8200,
+    soreness: 3,
+  },
+  {
+    id: "rec-6",
+    date: "2024-08-06",
+    sleepHours: 7.8,
+    sleepQuality: 4,
+    steps: 8800,
+    soreness: 2,
+  },
+  {
+    id: "rec-7",
+    date: "2024-08-07",
+    sleepHours: 6.9,
+    sleepQuality: 3,
+    steps: 7400,
+    soreness: 4,
+    injuryNote: "Left calf tightness",
+  },
+];
