@@ -21,47 +21,47 @@ export type UpdatePomodoroGroupDTO = {
 };
 
 /**
- * GET /api/pomodoro-groups
+ * GET /pomodoro-groups
  */
 export async function listPomodoroGroups(): Promise<PomodoroGroup[]> {
   const { data } = await http.get<PomodoroGroup[]>(
-    "/api/pomodoro-groups"
+    "/pomodoro-groups"
   );
   return data;
 }
 
 /**
- * POST /api/pomodoro-groups
+ * POST /pomodoro-groups
  */
 export async function createPomodoroGroup(
   body: CreatePomodoroGroupDTO
 ): Promise<PomodoroGroup> {
   const { data } = await http.post<PomodoroGroup>(
-    "/api/pomodoro-groups",
+    "/pomodoro-groups",
     body
   );
   return data;
 }
 
 /**
- * PUT /api/pomodoro-groups/{id}
+ * PUT /pomodoro-groups/{id}
  */
 export async function updatePomodoroGroup(
   groupId: string,
   body: UpdatePomodoroGroupDTO
 ): Promise<PomodoroGroup> {
   const { data } = await http.put<PomodoroGroup>(
-    `/api/pomodoro-groups/${groupId}`,
+    `/pomodoro-groups/${groupId}`,
     body
   );
   return data;
 }
 
 /**
- * DELETE /api/pomodoro-groups/{id}
+ * DELETE /pomodoro-groups/{id}
  */
 export async function deletePomodoroGroup(
   groupId: string
 ): Promise<void> {
-  await http.delete(`/api/pomodoro-groups/${groupId}`);
+  await http.delete(`/pomodoro-groups/${groupId}`);
 }
