@@ -1,0 +1,1 @@
+export { GymRoutes } from "./routes";

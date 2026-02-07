@@ -1,3 +1,5 @@
+/* GymPage.module.scss */
+
 .page {
   max-width: 1100px;
   margin: 0 auto;
@@ -11,6 +13,18 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
+
+  .h1 {
+    margin: 0 0 6px 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+  }
+
+  .lead {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.45;
+  }
 }
 
 .gridTwo {
@@ -24,86 +38,327 @@
   border-radius: 14px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.05);
+
+  h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    margin: 10px 0 8px 0;
+    font-size: 0.98rem;
+  }
+}
+
+.stack {
+  display: grid;
+  gap: 10px;
 }
 
 .subCard {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
+  border-radius: 12px;
+  padding: 12px;
+
+  .subCardTitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+
+    strong {
+      font-size: 0.98rem;
+      line-height: 1.2;
+    }
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
 }
 
 .muted {
   color: var(--muted);
+  margin: 6px 0;
+  line-height: 1.45;
 }
 
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.22);
+  text-underline-offset: 3px;
+
+  &:hover {
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* KeyValueList */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.listLabel {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.listValue {
+  color: var(--text);
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+/* Titles and meta rows */
+.cardTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.dot {
+  opacity: 0.6;
+}
+
+/* Buttons */
 .quickActions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 10px 0;
+}
 
-  button {
+.btn,
+.btnPrimary {
+  appearance: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+
+  &:hover {
     background: rgba(255, 255, 255, 0.12);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 8px;
-    padding: 6px 10px;
-    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
   }
 }
 
-.prBadge {
-  background: rgba(39, 174, 96, 0.2);
-  border: 1px solid rgba(39, 174, 96, 0.4);
-  color: #9cf0bf;
-  border-radius: 999px;
-  padding: 3px 8px;
-  font-size: 12px;
-  margin-right: 6px;
+.btnPrimary {
+  background: rgba(255, 255, 255, 0.14);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
 }
 
-.cardTitleRow {
+/* Badges */
+.badgeRow {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px 0;
 }
 
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.badge_neutral {
+  opacity: 0.95;
+}
+
+.badge_good {
+  border-color: rgba(39, 174, 96, 0.35);
+  background: rgba(39, 174, 96, 0.18);
+}
+
+.badge_bad {
+  border-color: rgba(231, 76, 60, 0.35);
+  background: rgba(231, 76, 60, 0.18);
+}
+
+/* Backwards compat if you still use PRBadge somewhere */
+.prBadge {
+  @extend .badge;
+  @extend .badge_good;
+}
+
+/* Set table */
 .setTable {
-  margin-top: 8px;
+  margin-top: 10px;
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
 .setRow {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  grid-template-columns: 52px 1fr 1fr 1fr 1fr;
+  gap: 10px;
   font-size: 13px;
+  padding: 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+
+  @media (max-width: 700px) {
+    grid-template-columns: 52px 1fr 1fr;
+    row-gap: 6px;
+  }
 }
 
+.setCell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Timer */
 .timer {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 10px;
-  margin: 8px 0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 8px 0 2px 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
 }
 
+/* Bullets */
+.bullets {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+
+  li {
+    color: var(--text);
+    line-height: 1.45;
+  }
+}
+
+/* Minor spacing helper */
+.h3Spacer {
+  margin-top: 14px;
+}
+
+/* Chart */
 .chart {
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .chartRow {
   display: grid;
-  grid-template-columns: 42px 1fr 70px;
+  grid-template-columns: 44px 1fr 86px;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+
+  @media (max-width: 520px) {
+    grid-template-columns: 44px 1fr;
+    grid-auto-rows: auto;
+  }
+}
+
+.chartLabel {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chartValue {
+  text-align: right;
+  color: var(--muted);
+
+  @media (max-width: 520px) {
+    text-align: left;
+  }
+}
+
+.barWrap {
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
 }
 
 .bar {
-  height: 10px;
+  height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #73a5ff, #8ef7b6);
+  /* Keep your gradient but make it a little subtler */
+  background: linear-gradient(90deg, rgba(115, 165, 255, 0.9), rgba(142, 247, 182, 0.9));
 }

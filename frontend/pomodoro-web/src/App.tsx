@@ -1,14 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { GymPage } from "./pages/gym/GymPage";
+import { GymRoutes } from "./modules/gym";
 import { HomePage } from "./pages/home/HomePage";
+import { LandingPage } from "./pages/landing/LandingPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/pomodoro" element={<HomePage />} />
-        <Route path="/gym" element={<GymPage />} />
+        <Route path="/gym" element={<GymRoutes />} />
+        <Route path="/gym/*" element={<GymRoutes />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );
