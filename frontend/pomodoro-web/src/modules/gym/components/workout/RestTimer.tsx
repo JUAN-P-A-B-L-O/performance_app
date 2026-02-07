@@ -4,34 +4,29 @@ import { Button } from "../common/Button";
 
 type RestTimerProps = {
   initialSeconds?: number;
-  startSignal?: number;
+  autoStart?: boolean;
 };
 
-export function RestTimer({ initialSeconds = 90, startSignal }: RestTimerProps) {
+export function RestTimer({ initialSeconds = 90, autoStart = false }: RestTimerProps) {
   const [secondsLeft, setSecondsLeft] = useState(initialSeconds);
-  const [isRunning, setIsRunning] = useState(false);
-
-  useEffect(() => {
-    if (startSignal === undefined) {
-      return;
-    }
-    setSecondsLeft(initialSeconds);
-    setIsRunning(true);
-  }, [startSignal, initialSeconds]);
+  const [isRunning, setIsRunning] = useState(autoStart);
 
   useEffect(() => {
     if (!isRunning) {
       return undefined;
     }
-    if (secondsLeft <= 0) {
-      setIsRunning(false);
-      return undefined;
-    }
     const timer = window.setInterval(() => {
-      setSecondsLeft((current) => Math.max(0, current - 1));
+      setSecondsLeft((current) => {
+        if (current <= 1) {
+          window.clearInterval(timer);
+          setIsRunning(false);
+          return 0;
+        }
+        return current - 1;
+      });
     }, 1000);
     return () => window.clearInterval(timer);
-  }, [isRunning, secondsLeft]);
+  }, [isRunning]);
 
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = String(secondsLeft % 60).padStart(2, "0");

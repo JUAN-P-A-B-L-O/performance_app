@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "./HomePage.module.scss";
 import { TimerCard } from "../../features/timer/TimerCard/TimeCard";
 import { CreateGroupModal } from "../../features/groups/CreateGroupModal";
@@ -25,13 +25,8 @@ function saveGroups(groups: PomodoroGroup[]) {
 export function HomePage() {
   const [groupId, setGroupId] = useState<string | null>(null);
 
-  const [groups, setGroups] = useState<PomodoroGroup[]>([]);
+  const [groups, setGroups] = useState<PomodoroGroup[]>(() => loadGroups());
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
-  useEffect(() => {
-    const initial = loadGroups();
-    setGroups(initial);
-  }, []);
 
   const selectedGroup = useMemo(
     () => groups.find((g) => g.id === groupId) ?? null,

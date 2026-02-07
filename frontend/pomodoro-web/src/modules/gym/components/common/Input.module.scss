@@ -4,8 +4,12 @@
   border-radius: 10px;
   border: 1px solid var(--border, #e2e8f0);
   font-size: 14px;
-  color: var(--text, #0f172a);
+  color: #0f172a;
   background: #fff;
+}
+
+.input::placeholder {
+  color: #64748b;
 }
 
 .input:focus-visible {

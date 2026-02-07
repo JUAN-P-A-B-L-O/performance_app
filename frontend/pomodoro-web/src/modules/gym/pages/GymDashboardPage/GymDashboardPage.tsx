@@ -49,7 +49,7 @@ export function GymDashboardPage() {
     if (!programs[0]) {
       return [];
     }
-    return programs[0].weeks[0]?.days ?? [];
+    return programs[0]?.weeks?.[0]?.days ?? [];
   }, [programs]);
 
   const weeklySummary = useMemo(() => {

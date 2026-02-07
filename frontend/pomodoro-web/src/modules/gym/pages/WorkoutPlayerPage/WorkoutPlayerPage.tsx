@@ -208,7 +208,7 @@ export function WorkoutPlayerPage() {
         </div>
       </Card>
 
-      <RestTimer startSignal={restSignal} />
+      <RestTimer key={restSignal} autoStart={restSignal > 0} />
 
       <section className={styles.exerciseGrid}>
         {session.exercises.map((exercise) => {

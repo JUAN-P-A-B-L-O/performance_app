@@ -24,8 +24,13 @@ const MEAL_KEY = "gym:mealTemplates";
 const RECOVERY_KEY = "gym:recovery";
 const GOAL_KEY = "gym:goals";
 
-function updateList<T extends { id: string }>(key: string, item: T) {
+function readList<T>(key: string) {
   const list = read<T[]>(key, []);
+  return Array.isArray(list) ? list : [];
+}
+
+function updateList<T extends { id: string }>(key: string, item: T) {
+  const list = readList<T>(key);
   const index = list.findIndex((entry) => entry.id === item.id);
   if (index >= 0) {
     list[index] = item;
@@ -36,7 +41,7 @@ function updateList<T extends { id: string }>(key: string, item: T) {
 }
 
 function deleteFromList<T extends { id: string }>(key: string, id: string) {
-  const list = read<T[]>(key, []);
+  const list = readList<T>(key);
   write(
     key,
     list.filter((entry) => entry.id !== id)
@@ -60,10 +65,10 @@ export const GymRepositoryMock = {
     write(USER_KEY, user);
   },
   async listExercises() {
-    return read<Exercise[]>(EXERCISE_KEY, []);
+    return readList<Exercise>(EXERCISE_KEY);
   },
   async getExercise(id: string) {
-    return read<Exercise[]>(EXERCISE_KEY, []).find(
+    return readList<Exercise>(EXERCISE_KEY).find(
       (exercise) => exercise.id === id
     );
   },
@@ -71,10 +76,10 @@ export const GymRepositoryMock = {
     updateList(EXERCISE_KEY, exercise);
   },
   async listPrograms() {
-    return read<ProgramTemplate[]>(PROGRAM_KEY, []);
+    return readList<ProgramTemplate>(PROGRAM_KEY);
   },
   async getProgram(id: string) {
-    return read<ProgramTemplate[]>(PROGRAM_KEY, []).find(
+    return readList<ProgramTemplate>(PROGRAM_KEY).find(
       (program) => program.id === id
     );
   },
@@ -82,7 +87,7 @@ export const GymRepositoryMock = {
     updateList(PROGRAM_KEY, program);
   },
   async duplicateProgram(id: string) {
-    const programs = read<ProgramTemplate[]>(PROGRAM_KEY, []);
+    const programs = readList<ProgramTemplate>(PROGRAM_KEY);
     const program = programs.find((item) => item.id === id);
     if (!program) {
       return;
@@ -95,10 +100,10 @@ export const GymRepositoryMock = {
     write(PROGRAM_KEY, [...programs, clone]);
   },
   async listWorkouts() {
-    return read<WorkoutSession[]>(WORKOUT_KEY, []);
+    return readList<WorkoutSession>(WORKOUT_KEY);
   },
   async getWorkout(id: string) {
-    return read<WorkoutSession[]>(WORKOUT_KEY, []).find(
+    return readList<WorkoutSession>(WORKOUT_KEY).find(
       (workout) => workout.id === id
     );
   },
@@ -109,7 +114,7 @@ export const GymRepositoryMock = {
     deleteFromList<WorkoutSession>(WORKOUT_KEY, id);
   },
   async listBodyWeight() {
-    return read<BodyWeightEntry[]>(BODY_KEY, []);
+    return readList<BodyWeightEntry>(BODY_KEY);
   },
   async addBodyWeight(entry: BodyWeightEntry) {
     updateList(BODY_KEY, entry);
@@ -118,7 +123,7 @@ export const GymRepositoryMock = {
     deleteFromList<BodyWeightEntry>(BODY_KEY, id);
   },
   async getNutritionDay(date: string) {
-    return read<NutritionDaySummary[]>(NUTRITION_KEY, []).find(
+    return readList<NutritionDaySummary>(NUTRITION_KEY).find(
       (day) => day.date === date
     );
   },
@@ -126,18 +131,18 @@ export const GymRepositoryMock = {
     updateList(NUTRITION_KEY, day);
   },
   async listNutritionRange(from: string, to: string) {
-    return read<NutritionDaySummary[]>(NUTRITION_KEY, []).filter(
+    return readList<NutritionDaySummary>(NUTRITION_KEY).filter(
       (day) => day.date >= from && day.date <= to
     );
   },
   async listMealTemplates() {
-    return read<MealTemplate[]>(MEAL_KEY, []);
+    return readList<MealTemplate>(MEAL_KEY);
   },
   async saveMealTemplates(templates: MealTemplate[]) {
     write(MEAL_KEY, templates);
   },
   async getRecoveryDay(date: string) {
-    return read<RecoveryEntry[]>(RECOVERY_KEY, []).find(
+    return readList<RecoveryEntry>(RECOVERY_KEY).find(
       (day) => day.date === date
     );
   },
@@ -145,12 +150,12 @@ export const GymRepositoryMock = {
     updateList(RECOVERY_KEY, day);
   },
   async listRecoveryRange(from: string, to: string) {
-    return read<RecoveryEntry[]>(RECOVERY_KEY, []).filter(
+    return readList<RecoveryEntry>(RECOVERY_KEY).filter(
       (day) => day.date >= from && day.date <= to
     );
   },
   async listGoals() {
-    return read<Goal[]>(GOAL_KEY, []);
+    return readList<Goal>(GOAL_KEY);
   },
   async saveGoal(goal: Goal) {
     updateList(GOAL_KEY, goal);
