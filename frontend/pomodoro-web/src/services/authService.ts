@@ -16,6 +16,10 @@ export async function login(email: string, password: string): Promise<AuthPayloa
 
   await new Promise((resolve) => setTimeout(resolve, latency));
 
+  if (Math.random() < 0.1) {
+    throw new AuthServiceError("NETWORK_ERROR", "Erro de rede.");
+  }
+
   // Mock rule: any password different from 123456 is invalid.
   if (password !== "123456") {
     throw new AuthServiceError("INVALID_CREDENTIALS", "Credenciais invalidas.");
