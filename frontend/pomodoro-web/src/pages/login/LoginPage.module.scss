@@ -1,0 +1,73 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.form {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 12px;
+}
+
+.input:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 1px;
+}
+
+.errorText {
+  margin: 0;
+  color: #fecaca;
+  font-size: 13px;
+}
+
+.submit {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
