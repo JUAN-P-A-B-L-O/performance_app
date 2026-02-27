@@ -1,7 +1,7 @@
-package com.juan.performanceApp.login.adapter.web.controller;
+package com.juan.performanceApp.auth.adapter.web.controller;
 
-import com.juan.performanceApp.login.adapter.web.dto.LoginResponseDto;
-import com.juan.performanceApp.login.adapter.web.dto.UserLoginDto;
+import com.juan.performanceApp.auth.adapter.web.dto.LoginResponseDto;
+import com.juan.performanceApp.auth.adapter.web.dto.UserLoginDto;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.juan.performanceApp.login.adapter.web.dto;
+package com.juan.performanceApp.auth.adapter.web.dto;
 
 public record LoginResponseDto(
         String accessToken,

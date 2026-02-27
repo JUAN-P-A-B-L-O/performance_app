@@ -1,4 +1,4 @@
-package com.juan.performanceApp.login.domain.model;
+package com.juan.performanceApp.user.domain.model;
 
 import java.util.Objects;
 import java.util.UUID;
