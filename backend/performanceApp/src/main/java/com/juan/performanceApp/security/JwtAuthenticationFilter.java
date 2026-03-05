@@ -1,6 +1,8 @@
 package com.juan.performanceApp.security;
 
 
+import com.juan.performanceApp.auth.application.service.auth.AuthenticatedUser;
+import com.juan.performanceApp.auth.application.service.token.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,15 +41,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String token = authHeader.substring(7);
 
-        if (!tokenService.isValid(token)) {
+        if (!tokenService.valitadeToken(token)) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        String userId = tokenService.extractUserId(token);
+        AuthenticatedUser user = tokenService.parse(token);
 
         var authentication = new UsernamePasswordAuthenticationToken(
-                userId,
+                user.id(),
                 null,
                 List.of() // roles later if needed
         );
