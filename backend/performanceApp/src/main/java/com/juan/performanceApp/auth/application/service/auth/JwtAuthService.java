@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Service
 public class JwtAuthService implements AuthService {
-    final public TokenService tokenService;
+    final private TokenService tokenService;
 
     public JwtAuthService(TokenService tokenService){
         this.tokenService = tokenService;
