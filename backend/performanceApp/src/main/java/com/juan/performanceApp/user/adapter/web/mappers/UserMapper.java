@@ -5,6 +5,8 @@ import com.juan.performanceApp.user.adapter.web.dto.UserDtoResponse;
 import com.juan.performanceApp.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class UserMapper {
 
@@ -24,5 +26,13 @@ public class UserMapper {
                 user.getName(),
                 user.getEmail()
         );
+    }
+
+    public List<UserDtoResponse> toResponseList(List<User> users){
+        if(users == null) return null;
+
+        return users.stream()
+                .map(this::toResponse)
+                .toList();
     }
 }

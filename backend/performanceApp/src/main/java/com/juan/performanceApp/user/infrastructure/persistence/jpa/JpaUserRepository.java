@@ -6,6 +6,8 @@ import com.juan.performanceApp.user.infrastructure.persistence.entity.UserEntity
 import com.juan.performanceApp.user.infrastructure.persistence.mappers.UserEntityMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class JpaUserRepository implements UserRepositoryI {
     final private UserJpaRepository userJpaRepository;
@@ -30,4 +32,15 @@ public class JpaUserRepository implements UserRepositoryI {
         return this.userEntityMapper
                 .toDomain(savedUser);
     }
+
+    @Override
+    public List<User> findAll() {
+        List<UserEntity> usersEntities = this.userJpaRepository.findAll();
+
+        List<User> users = this.userEntityMapper.toDomainList(usersEntities);
+
+        return users;
+    }
+
+
 }

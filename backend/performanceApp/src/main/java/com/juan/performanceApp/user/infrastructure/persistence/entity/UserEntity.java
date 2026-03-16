@@ -22,6 +22,10 @@ public class UserEntity {
     @Column(nullable = false, name = "password_hash")
     String password;
 
+    public UserEntity(){
+
+    }
+
     public UserEntity(String name, String email, String password){
         this.name = name;
         this.email = email;

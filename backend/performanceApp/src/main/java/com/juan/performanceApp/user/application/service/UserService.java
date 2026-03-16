@@ -6,6 +6,8 @@ import com.juan.performanceApp.user.domain.service.IUserService;
 import com.juan.performanceApp.user.infrastructure.persistence.jpa.UserJpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserService implements IUserService
@@ -26,6 +28,13 @@ public class UserService implements IUserService
         User createdUser = userRepository.create(user);
 
         return createdUser;
+    }
+
+    @Override
+    public List<User> findAll() {
+        List users = userRepository.findAll();
+
+        return users;
     }
 
 
