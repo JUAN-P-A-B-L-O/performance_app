@@ -6,8 +6,8 @@ import java.util.UUID;
 public final class User {
     private final UUID id;                 // can be null for new user, or use factories
     private final String name;
-    private final String email;            // store normalized
-    private final String passwordHash;     // never raw password
+    private final String email;
+    private final String passwordHash;
 
     private User(UUID id, String name, String email, String passwordHash) {
         this.id = id;
@@ -30,7 +30,7 @@ public final class User {
 
     // Intentionally no getPasswordHash() if you want extra safety.
     // If you need it for persistence mapping, expose it carefully (package-private).
-    String passwordHash() { return passwordHash; }
+    public String getPasswordHash() { return passwordHash; }
 
     private static String normalizeEmail(String email) {
         email = requireNotBlank(email, "email").trim().toLowerCase();
